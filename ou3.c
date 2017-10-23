@@ -132,7 +132,7 @@ int main(int argc, char **argv){
 }
 
 bool isNumber(char number[]){
-    for (int i = 0; number[i] != 0; i++){
+    for (int i = 0;  i < strlen(number); i++){
         if (!isdigit(number[i]))
             return false;
     }
