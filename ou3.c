@@ -36,14 +36,12 @@ char* getFileName(int id){
 
 void *benchmark(void* temp){
     int id=*((int*)temp);
-    printf("%d\n",id );
     pthread_mutex_lock(&lock);
     time_thread[id].start_w_time=getRealTime();
     pthread_mutex_unlock(&lock);
     char collect[nrOfTokens+1];
     FILE *fp=NULL;
     char* fileName=getFileName(id);
-    printf("%s\n",fileName);
     fp=fopen(fileName,"w"); /*creating files if they dont exist*/
     if(rw='w'){
         for(int i=0; i < nrOfTokens;i++){
@@ -82,7 +80,6 @@ int main(int argc, char **argv){
     	fprintf(stderr, "%s\n","nrofthreads and tokens must be numbers" );
     	exit(-1);
     }
-    printf("%c\n",argv[1][0] );
     rw=argv[1][0];
     int nrOfThreads=atoi(argv[2]);
     if(nrOfThreads > MAX_THREADS){
